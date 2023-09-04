@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
 import 'package:food_delivery/models/order.dart';
-import 'package:food_delivery/widgets/resturants_nearby.dart';
 
 class RecentOrders extends StatelessWidget {
   const RecentOrders({super.key});
@@ -37,7 +36,7 @@ class RecentOrders extends StatelessWidget {
             width: 15,
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -60,18 +59,15 @@ class RecentOrders extends StatelessWidget {
           const SizedBox(
             width: 30,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 18),
-            child: CircleAvatar(
-              radius: 27,
-              backgroundColor: Theme.of(context).primaryColor,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-                onPressed: () {},
+          CircleAvatar(
+            radius: 27,
+            backgroundColor: Theme.of(context).primaryColor,
+            child: IconButton(
+              icon: const Icon(
+                Icons.add,
+                color: Colors.white,
               ),
+              onPressed: () {},
             ),
           )
         ],
@@ -119,6 +115,9 @@ class RecentOrders extends StatelessWidget {
           color: Colors.grey.shade50,
           height: 120,
           child: ListView.builder(
+            controller: ScrollController(),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             scrollDirection: Axis.horizontal,
             itemCount: currentUser.orders.length,
             itemBuilder: (BuildContext context, int index) {
@@ -130,10 +129,6 @@ class RecentOrders extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Resturants(),
-        )
       ],
     );
   }

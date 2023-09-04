@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
 import 'package:food_delivery/widgets/recent_orders.dart';
 
+import '../widgets/resturants_nearby.dart';
+
 //
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,8 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         title: const Padding(
-          padding:   EdgeInsets.only(top: 10),
-          child:  Text('Food Delivery'),
+          padding: EdgeInsets.only(top: 10),
+          child: Text('Food Delivery'),
         ),
         actions: <Widget>[
           TextButton(
@@ -74,7 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
             ),
           ),
-          const RecentOrders()
+          const RecentOrders(),
+          const Resturants(),
         ],
       ),
     );
